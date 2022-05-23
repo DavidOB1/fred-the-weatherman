@@ -3,6 +3,9 @@
 Fred is a Twitter bot who tweets cool things about the weather and retweets from other weather accounts.
 You can find Fred's twitter here: https://twitter.com/fred_weatherman
 
+The profile picture for the Twitter account is an AI generated face.
+You can generate your own AI profile picture at: https://this-person-does-not-exist.com/
+
 # About the Code
 
 This code uses OpenWeatherMap's API to collect data about the weather in US cities in order to make tweets.
