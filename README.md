@@ -14,3 +14,6 @@ data that I used for us-cities.txt, the file can be found here: https://gist.git
 
 In the actual build I have running, I have defined the api keys used for the OpenWeatherMap API and the Twitter API.
 If you wish to successfully run this code yourself, you will need to get API keys for both of those.
+
+The code is currently being executed from Heroku (assuming it is still running at the time of you reading this).
+You can learn more about Heroku and their hosting services at: https://www.heroku.com/
