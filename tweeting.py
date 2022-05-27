@@ -139,7 +139,7 @@ access_token_secret = "" ## INSERT API KEY HERE
 # Creating the bot
 bot = MyTwitterBot(api_key, api_key_secret, access_token, access_token_secret)
 
-print("Running version 1.4.4 ......")
+print("Running version 1.4.5 ......")
 
 # Assigns the task
 schedule.every(2).hours.do(updating)
