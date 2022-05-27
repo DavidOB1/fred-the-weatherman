@@ -38,7 +38,7 @@ def city_name(city_pair):
 # Returns the name of the city for the tweets
 def tweet_city_name(city_pair):
     if city_pair[0] == "New York":
-        return "New York City"
+        return "New York City, New York"
     else:
         return ", ".join(city_pair)
 
@@ -48,7 +48,7 @@ def hashtag_city(city_pair):
     if city_pair[0] == "New York":
         return "#NYC #NewYork"
     else:
-        city = city_pair[0].replace(" ", "")
+        city = city_pair[0].replace(" ", "").replace(".", "")
         state = city_pair[1].replace(" ", "")
         return f"#{city} #{state}"
 
