@@ -73,7 +73,9 @@ def get_city_list():
     # And removing DC sicne it causes issues (since it's not in a state)
     # Plus: Removing Toledo due to confusion with Toledo Spain
     # Plus: Removing Santa Rosa due to confusion with other country weather data
+    # Removing Norfolk due to confusion with Norfolk MA
     del cities[139]
+    del cities[80]
     del cities[77]
     del cities[66]
     del cities[22]
