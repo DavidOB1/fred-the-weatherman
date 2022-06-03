@@ -5,10 +5,16 @@ from random import randrange
 import time
 import schedule
 
+
 # Adds an item to the end of the list and removes the first item of the list
 def pop_to_end(lst, item):
     lst.append(item)
     del lst[0]
+
+
+# Removes leading and trailing  whitespaces
+def remove_spaces(s):
+    return s.lstrip(" ").rstrip(" ")
 
 
 # Represents a twitter bot
@@ -21,7 +27,7 @@ class MyTwitterBot:
         authenticator.set_access_token(access_token, access_token_secret)
         self.api = tweepy.API(authenticator, wait_on_rate_limit=True)
 
-        # Keeps track of last 3 replied-to tweets
+        # Keeps track of last 10 replied-to tweets
         self.replied = [0 for x in range(10)]
         mentions = self.api.mentions_timeline(count=10)
         mentions.reverse()
@@ -51,7 +57,7 @@ class MyTwitterBot:
             if not tweet.retweeted:
                 self.api.retweet(tweet.id)
                 return
-    
+
 
     # Updates by either sending a new tweet or retweeting another tweet
     def update(self):
@@ -72,7 +78,7 @@ class MyTwitterBot:
         for mention in mentions:
             if not mention.id in self.replied:
                 pop_to_end(self.replied, mention.id)
-                tweet_text = mention.text.replace("@fred_weatherman ", "")
+                tweet_text = remove_spaces(mention.text.replace("@fred_weatherman", ""))
 
                 # Attempts to reply with a forecast
                 try:
@@ -95,7 +101,7 @@ class MyTwitterBot:
         already_liked = []
 
         # Creates an iterable with tweets that have a certain hashtag
-        hashtag_choices = ["#weather", "#nature", "#forecast"]
+        hashtag_choices = ["#weather", "#nature", "#forecast", "#nywx", "#cawx", "#mawx", "txwx", "flwx", "njwx", "cowx", "#catpicture"]
         tweets = tweepy.Cursor(self.api.search_tweets, random.choice(hashtag_choices), result_type="mixed", count=200).items(200)
         i = 0
 
@@ -139,15 +145,15 @@ access_token_secret = "" ## INSERT API KEY HERE
 # Creating the bot
 bot = MyTwitterBot(api_key, api_key_secret, access_token, access_token_secret)
 
-print("Running version 1.4.5 ......")
+print("Running version 1.4.6 ......")
 
-# Assigns the task
+# Assigning the tasks
 schedule.every(2).hours.do(updating)
-schedule.every(23).minutes.do(update_likes)
+schedule.every(19).minutes.do(update_likes)
 
 # Enters the loop
 print("Starting the loop")
 while True:
     schedule.run_pending()
     bot.check_mentions()
-    time.sleep(30)
+    time.sleep(20)
