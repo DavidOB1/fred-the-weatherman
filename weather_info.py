@@ -74,10 +74,12 @@ def get_city_list():
     # Plus: Removing Toledo due to confusion with Toledo Spain
     # Plus: Removing Santa Rosa due to confusion with other country weather data
     # Removing Norfolk due to confusion with Norfolk MA
+    # Removing Oakland due to confusion with Oakland MI
     del cities[139]
     del cities[80]
     del cities[77]
     del cities[66]
+    del cities[44]
     del cities[22]
 
     # Returns the final list
