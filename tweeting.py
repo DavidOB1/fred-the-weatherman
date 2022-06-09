@@ -136,24 +136,26 @@ def update_likes():
     print("Just liked some posts.")
 
 
-# Defining the API keys
-api_key = "" ## INSERT API KEY HERE
-api_key_secret = "" ## INSERT API KEY HERE
-access_token = "" ## INSERT API KEY HERE
-access_token_secret = "" ## INSERT API KEY HERE
+# The main loop of the program
+if __name__ == "__main__":
+    # Defining the API keys
+    api_key = "" ## INSERT API KEY HERE
+    api_key_secret = "" ## INSERT API KEY HERE
+    access_token = "" ## INSERT API KEY HERE
+    access_token_secret = "" ## INSERT API KEY HERE
 
-# Creating the bot
-bot = MyTwitterBot(api_key, api_key_secret, access_token, access_token_secret)
+    # Creating the bot
+    bot = MyTwitterBot(api_key, api_key_secret, access_token, access_token_secret)
 
-print("Running version 1.4.6 ......")
+    print("Running version 1.5 ......")
 
-# Assigning the tasks
-schedule.every(2).hours.do(updating)
-schedule.every(19).minutes.do(update_likes)
+    # Assigning the tasks
+    schedule.every(2).hours.do(updating)
+    schedule.every(19).minutes.do(update_likes)
 
-# Enters the loop
-print("Starting the loop")
-while True:
-    schedule.run_pending()
-    bot.check_mentions()
-    time.sleep(20)
+    # Enters the loop
+    print("Starting the loop")
+    while True:
+        schedule.run_pending()
+        bot.check_mentions()
+        time.sleep(20)
