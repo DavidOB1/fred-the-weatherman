@@ -151,7 +151,7 @@ if __name__ == "__main__":
 
     # Assigning the tasks
     schedule.every(2).hours.do(updating)
-    schedule.every(19).minutes.do(update_likes)
+    schedule.every(90).minutes.do(update_likes)
 
     # Enters the loop
     print("Starting the loop")
